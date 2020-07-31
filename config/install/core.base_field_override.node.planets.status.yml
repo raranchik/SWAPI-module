@@ -1,0 +1,22 @@
+uuid: 6cb96ad9-526d-46c9-b82a-8d36f9816483
+langcode: ru
+status: true
+dependencies:
+  config:
+    - node.type.planets
+id: node.planets.status
+field_name: status
+entity_type: node
+bundle: planets
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

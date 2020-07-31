@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vehicles_manufacturer
+    - node.type.vehicles
+id: node.vehicles.field_vehicles_manufacturer
+field_name: field_vehicles_manufacturer
+entity_type: node
+bundle: vehicles
+label: 'Vehicles manufacturer'
+description: 'The manufacturer of this vehicle. Comma separated if more than one.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

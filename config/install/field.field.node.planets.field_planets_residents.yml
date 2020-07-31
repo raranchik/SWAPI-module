@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_planets_residents
+    - node.type.planets
+  module:
+    - options
+id: node.planets.field_planets_residents
+field_name: field_planets_residents
+entity_type: node
+bundle: planets
+label: 'Planets residents'
+description: 'An array of People URL Resources that live on this planet.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

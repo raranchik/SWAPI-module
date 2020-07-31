@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - swapi
+name: 'Films'
+type: films
+description: 'A Film resource is a single film.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

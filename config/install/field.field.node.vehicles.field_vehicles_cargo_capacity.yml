@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vehicles_cargo_capacity
+    - node.type.vehicles
+id: node.vehicles.field_vehicles_cargo_capacity
+field_name: field_vehicles_cargo_capacity
+entity_type: node
+bundle: vehicles
+label: 'Vehicles cargo capacity'
+description: 'The maximum number of kilograms that this vehicle can transport.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

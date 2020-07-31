@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_films_planets
+    - node.type.films
+  module:
+    - options
+id: node.films.field_films_planets
+field_name: field_films_planets
+entity_type: node
+bundle: films
+label: 'Films planets'
+description: 'An array of planet resource URLs that are in this film.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

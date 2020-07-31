@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_planets_name
+    - node.type.planets
+id: node.planets.field_planets_name
+field_name: field_planets_name
+entity_type: node
+bundle: planets
+label: 'Planets name'
+description: 'The name of this planet.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

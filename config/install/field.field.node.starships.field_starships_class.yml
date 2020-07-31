@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_starships_class
+    - node.type.starships
+id: node.starships.field_starships_class
+field_name: field_starships_class
+entity_type: node
+bundle: starships
+label: 'Starships class'
+description: 'The class of this starship, such as "Starfighter" or "Deep Space Mobile Battlestation"'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

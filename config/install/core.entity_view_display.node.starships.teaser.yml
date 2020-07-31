@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.starships.field_starships_cargo_capacity
+    - field.field.node.starships.field_starships_class
+    - field.field.node.starships.field_starships_consumables
+    - field.field.node.starships.field_starships_cost_in_credits
+    - field.field.node.starships.field_starships_created
+    - field.field.node.starships.field_starships_crew
+    - field.field.node.starships.field_starships_edited
+    - field.field.node.starships.field_starships_films
+    - field.field.node.starships.field_starships_hyperdrive_ratin
+    - field.field.node.starships.field_starships_length
+    - field.field.node.starships.field_starships_manufacturer
+    - field.field.node.starships.field_starships_max_atmosphering
+    - field.field.node.starships.field_starships_mglt
+    - field.field.node.starships.field_starships_model
+    - field.field.node.starships.field_starships_name
+    - field.field.node.starships.field_starships_passengers
+    - field.field.node.starships.field_starships_pilots
+    - field.field.node.starships.field_starships_url
+    - node.type.starships
+  module:
+    - user
+id: node.starships.teaser
+targetEntityType: node
+bundle: starships
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_starships_cargo_capacity: true
+  field_starships_class: true
+  field_starships_consumables: true
+  field_starships_cost_in_credits: true
+  field_starships_created: true
+  field_starships_crew: true
+  field_starships_edited: true
+  field_starships_films: true
+  field_starships_hyperdrive_ratin: true
+  field_starships_length: true
+  field_starships_manufacturer: true
+  field_starships_max_atmosphering: true
+  field_starships_mglt: true
+  field_starships_model: true
+  field_starships_name: true
+  field_starships_passengers: true
+  field_starships_pilots: true
+  field_starships_url: true
+  langcode: true

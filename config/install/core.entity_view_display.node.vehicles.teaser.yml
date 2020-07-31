@@ -1,0 +1,52 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.vehicles.field_vehicles_cargo_capacity
+    - field.field.node.vehicles.field_vehicles_class
+    - field.field.node.vehicles.field_vehicles_consumables
+    - field.field.node.vehicles.field_vehicles_cost_in_credits
+    - field.field.node.vehicles.field_vehicles_created
+    - field.field.node.vehicles.field_vehicles_crew
+    - field.field.node.vehicles.field_vehicles_edited
+    - field.field.node.vehicles.field_vehicles_films
+    - field.field.node.vehicles.field_vehicles_length
+    - field.field.node.vehicles.field_vehicles_manufacturer
+    - field.field.node.vehicles.field_vehicles_max_atmosphering_
+    - field.field.node.vehicles.field_vehicles_model
+    - field.field.node.vehicles.field_vehicles_name
+    - field.field.node.vehicles.field_vehicles_passengers
+    - field.field.node.vehicles.field_vehicles_pilots
+    - field.field.node.vehicles.field_vehicles_url
+    - node.type.vehicles
+  module:
+    - user
+id: node.vehicles.teaser
+targetEntityType: node
+bundle: vehicles
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_vehicles_cargo_capacity: true
+  field_vehicles_class: true
+  field_vehicles_consumables: true
+  field_vehicles_cost_in_credits: true
+  field_vehicles_created: true
+  field_vehicles_crew: true
+  field_vehicles_edited: true
+  field_vehicles_films: true
+  field_vehicles_length: true
+  field_vehicles_manufacturer: true
+  field_vehicles_max_atmosphering_: true
+  field_vehicles_model: true
+  field_vehicles_name: true
+  field_vehicles_passengers: true
+  field_vehicles_pilots: true
+  field_vehicles_url: true
+  langcode: true

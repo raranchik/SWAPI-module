@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_species_people
+    - node.type.species
+  module:
+    - options
+id: node.species.field_species_people
+field_name: field_species_people
+entity_type: node
+bundle: species
+label: 'Species people'
+description: 'An array of People URL Resources that are a part of this species.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

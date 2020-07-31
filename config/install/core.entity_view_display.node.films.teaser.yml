@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.films.field_films_cha
+    - field.field.node.films.field_films_director
+    - field.field.node.films.field_films_ed
+    - field.field.node.films.field_films_episode_id
+    - field.field.node.films.field_films_opening_crawl
+    - field.field.node.films.field_films_p
+    - field.field.node.films.field_films_planets
+    - field.field.node.films.field_films_rel
+    - field.field.node.films.field_films_spe
+    - field.field.node.films.field_films_starships
+    - field.field.node.films.field_films_title
+    - field.field.node.films.field_films_url
+    - field.field.node.films.field_films_vehicles
+    - node.type.films
+  module:
+    - user
+id: node.films.teaser
+targetEntityType: node
+bundle: films
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_films_cha: true
+  field_films_director: true
+  field_films_ed: true
+  field_films_episode_id: true
+  field_films_opening_crawl: true
+  field_films_p: true
+  field_films_planets: true
+  field_films_rel: true
+  field_films_spe: true
+  field_films_starships: true
+  field_films_title: true
+  field_films_url: true
+  field_films_vehicles: true
+  langcode: true

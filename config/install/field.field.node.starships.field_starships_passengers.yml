@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_starships_passengers
+    - node.type.starships
+id: node.starships.field_starships_passengers
+field_name: field_starships_passengers
+entity_type: node
+bundle: starships
+label: 'Starships passengers'
+description: 'The number of non-essential people this starship can transport.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_species_films
+    - node.type.species
+  module:
+    - options
+id: node.species.field_species_films
+field_name: field_species_films
+entity_type: node
+bundle: species
+label: 'Species films'
+description: 'An array of Film URL Resources that this species has appeared in.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

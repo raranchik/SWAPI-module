@@ -1,0 +1,148 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.vehicles.field_vehicles_cargo_capacity
+    - field.field.node.vehicles.field_vehicles_class
+    - field.field.node.vehicles.field_vehicles_consumables
+    - field.field.node.vehicles.field_vehicles_cost_in_credits
+    - field.field.node.vehicles.field_vehicles_created
+    - field.field.node.vehicles.field_vehicles_crew
+    - field.field.node.vehicles.field_vehicles_edited
+    - field.field.node.vehicles.field_vehicles_films
+    - field.field.node.vehicles.field_vehicles_length
+    - field.field.node.vehicles.field_vehicles_manufacturer
+    - field.field.node.vehicles.field_vehicles_max_atmosphering_
+    - field.field.node.vehicles.field_vehicles_model
+    - field.field.node.vehicles.field_vehicles_name
+    - field.field.node.vehicles.field_vehicles_passengers
+    - field.field.node.vehicles.field_vehicles_pilots
+    - field.field.node.vehicles.field_vehicles_url
+    - node.type.vehicles
+  module:
+    - options
+    - user
+id: node.vehicles.default
+targetEntityType: node
+bundle: vehicles
+mode: default
+content:
+  field_vehicles_cargo_capacity:
+    weight: 110
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_class:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_consumables:
+    weight: 111
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_cost_in_credits:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_created:
+    weight: 116
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_crew:
+    weight: 107
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_edited:
+    weight: 117
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_films:
+    weight: 114
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_vehicles_length:
+    weight: 105
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_manufacturer:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_max_atmosphering_:
+    weight: 109
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_model:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_name:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_passengers:
+    weight: 108
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_vehicles_pilots:
+    weight: 113
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_vehicles_url:
+    weight: 115
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

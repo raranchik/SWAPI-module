@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.planets.field_planets_climate
+    - field.field.node.planets.field_planets_created
+    - field.field.node.planets.field_planets_diameter
+    - field.field.node.planets.field_planets_edited
+    - field.field.node.planets.field_planets_films
+    - field.field.node.planets.field_planets_gravity
+    - field.field.node.planets.field_planets_name
+    - field.field.node.planets.field_planets_orbital_period
+    - field.field.node.planets.field_planets_population
+    - field.field.node.planets.field_planets_residents
+    - field.field.node.planets.field_planets_rotation_period
+    - field.field.node.planets.field_planets_surface_water
+    - field.field.node.planets.field_planets_terrain
+    - field.field.node.planets.field_planets_url
+    - node.type.planets
+  module:
+    - user
+id: node.planets.teaser
+targetEntityType: node
+bundle: planets
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_planets_climate: true
+  field_planets_created: true
+  field_planets_diameter: true
+  field_planets_edited: true
+  field_planets_films: true
+  field_planets_gravity: true
+  field_planets_name: true
+  field_planets_orbital_period: true
+  field_planets_population: true
+  field_planets_residents: true
+  field_planets_rotation_period: true
+  field_planets_surface_water: true
+  field_planets_terrain: true
+  field_planets_url: true
+  langcode: true

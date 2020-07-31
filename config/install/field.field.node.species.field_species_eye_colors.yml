@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_species_eye_colors
+    - node.type.species
+id: node.species.field_species_eye_colors
+field_name: field_species_eye_colors
+entity_type: node
+bundle: species
+label: 'Species eye colors'
+description: 'A comma-separated string of common eye colors for this species, "none" if this species does not typically have eyes.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

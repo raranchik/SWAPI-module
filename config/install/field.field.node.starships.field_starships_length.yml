@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_starships_length
+    - node.type.starships
+id: node.starships.field_starships_length
+field_name: field_starships_length
+entity_type: node
+bundle: starships
+label: 'Starships length'
+description: 'The length of this starship in meters.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

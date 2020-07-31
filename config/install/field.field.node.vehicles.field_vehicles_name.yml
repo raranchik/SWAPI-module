@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vehicles_name
+    - node.type.vehicles
+id: node.vehicles.field_vehicles_name
+field_name: field_vehicles_name
+entity_type: node
+bundle: vehicles
+label: 'Vehicles name'
+description: 'The name of this vehicle. The common name, such as "Sand Crawler" or "Speeder bike".'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_starships_films
+    - node.type.starships
+  module:
+    - options
+id: node.starships.field_starships_films
+field_name: field_starships_films
+entity_type: node
+bundle: starships
+label: 'Starships films'
+description: 'An array of Film URL Resources that this starship has appeared in.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

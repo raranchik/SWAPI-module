@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_species_name
+    - node.type.species
+id: node.species.field_species_name
+field_name: field_species_name
+entity_type: node
+bundle: species
+label: 'Species name'
+description: 'The name of this species.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

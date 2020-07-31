@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_starships_model
+    - node.type.starships
+id: node.starships.field_starships_model
+field_name: field_starships_model
+entity_type: node
+bundle: starships
+label: 'Starships model'
+description: 'The model or official name of this starship. Such as "T-65 X-wing" or "DS-1 Orbital Battle Station".'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
