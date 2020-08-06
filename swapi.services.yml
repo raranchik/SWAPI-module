@@ -1,0 +1,5 @@
+services:
+  swapi.data_retrieval:
+    class: Drupal\swapi\DataRetrieval
+  swapi.people_retrieval:
+    class: Drupal\swapi\People

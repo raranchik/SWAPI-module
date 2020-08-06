@@ -1,0 +1,18 @@
+<?php
+
+  use Drupal\Core\Queue\QueueFactory;
+  use Drupal\Core\Queue\QueueInterface;
+
+    function people_queue_cron_job() {
+      $queue_factory = \Drupal::service('queue');
+
+      $queue = $queue_factory->get('people_queue_worker');
+
+      $People = \Drupal::service('swapi.people_retrieval')->getPeople();
+
+      foreach ($People as $Character) {
+        $queue->createItem($Character);
+
+        $queue->deleteItem($Character);
+      }
+    }

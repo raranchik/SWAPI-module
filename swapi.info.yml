@@ -1,7 +1,9 @@
 name: swapi
 type: module
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^8
 description: 'swapi.dev'
 dependencies:
   - node
-package: SWAPI module
+  - ultimate_cron
+  - queue_ui
+package: custom

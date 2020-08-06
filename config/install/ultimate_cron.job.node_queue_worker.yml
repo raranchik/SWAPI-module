@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - swapi
+title: 'People Queue Worker'
+id: people_queue_worker
+module: swapi
+callback: people_queue_cron_job

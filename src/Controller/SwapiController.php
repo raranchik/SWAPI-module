@@ -3,16 +3,14 @@
 namespace Drupal\swapi\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\swapi\Form\SwapiSearch;
 
 class SwapiController extends ControllerBase {
-  public function helloWorld() {
-    $output = array();
+  public function test() {
+    $output = [];
 
-    $output['#title'] = 'HelloWorld page title';
+    $output['markup'] = \Drupal::service('swapi.data_retrieval')->getPeople();
 
-    $output['#markup'] = 'Hello World!';
-
-    return $output;
+    return $output['markup'];
   }
-
 }
