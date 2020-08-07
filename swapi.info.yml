@@ -3,7 +3,5 @@ type: module
 core_version_requirement: ^9 || ^8
 description: 'swapi.dev'
 dependencies:
-  - node
   - ultimate_cron
-  - queue_ui
 package: custom
