@@ -4,6 +4,12 @@
   use Drupal\Core\Queue\QueueInterface;
 
     function people_queue_cron_job() {
+/*      $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+
+      $entity = $storage_handler->loadByProperties(['type' => 'people']);
+
+      $storage_handler->delete($entity);*/
+
       $queue_factory = \Drupal::service('queue');
 
       $queue = $queue_factory->get('people_queue_worker');
@@ -13,6 +19,10 @@
       foreach ($People as $Character) {
         $queue->createItem($Character);
 
-        $queue->deleteItem($Character);
+        $item = $queue->claimItem();
+
+        $queue->deleteItem($item);
       }
+
+      $queue->deleteQueue();
     }
