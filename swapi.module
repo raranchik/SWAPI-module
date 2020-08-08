@@ -3,26 +3,38 @@
   use Drupal\Core\Queue\QueueFactory;
   use Drupal\Core\Queue\QueueInterface;
 
-    function people_queue_cron_job() {
-/*      $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+  function swapi_cron_people_job() {
+    $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
 
-      $entity = $storage_handler->loadByProperties(['type' => 'people']);
+    $entity = $storage_handler->loadByProperties(['type' => 'people']);
 
-      $storage_handler->delete($entity);*/
+    $storage_handler->delete($entity);
 
-      $queue_factory = \Drupal::service('queue');
+    $queue_factory = \Drupal::service('queue');
 
-      $queue = $queue_factory->get('people_queue_worker');
+    $queue = $queue_factory->get('people_queue_worker');
 
-      $People = \Drupal::service('swapi.people_retrieval')->getPeople();
+    $People = \Drupal::service('swapi.people_retrieval')->getPeople();
 
-      foreach ($People as $Character) {
-        $queue->createItem($Character);
-
-        $item = $queue->claimItem();
-
-        $queue->deleteItem($item);
-      }
-
-      $queue->deleteQueue();
+    foreach ($People as $Character) {
+      $queue->createItem($Character);
     }
+  }
+
+/*  function swapi_people_cronjob() {
+     $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+
+          $entity = $storage_handler->loadByProperties(['type' => 'people']);
+
+          $storage_handler->delete($entity);
+
+    $queue_factory = \Drupal::service('queue');
+
+    $queue = $queue_factory->get('people_queue_worker');
+
+    $People = \Drupal::service('swapi.people_retrieval')->getPeople();
+
+    foreach ($People as $Character) {
+      $queue->createItem($Character);
+    }
+  }*/

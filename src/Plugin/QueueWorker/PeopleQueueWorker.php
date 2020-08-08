@@ -6,16 +6,18 @@
   use Drupal\node\Entity\Node;
 
   /**
-   * A Node Publisher that publishes nodes on CRON run.
+   * Processes Node Tasks.
    *
    * @QueueWorker(
    *   id = "people_queue_worker",
-   *   title = @Translation("Task worker: Node"),
+   *   title = @Translation("People node"),
    *   cron = {"time" = 60}
    * )
    */
 
   class PeopleQueueWorker extends QueueWorkerBase {
+
+
     public function processItem($Character) {
       $node = Node::create([
         'type' => 'people',
@@ -26,6 +28,10 @@
         $node->set(('field_' . $field), $fieldValue);
       }
 
+      $this->saveNode($node);
+    }
+
+    private function saveNode($node){
       $node->setPublished(true);
       $node->save();
     }
