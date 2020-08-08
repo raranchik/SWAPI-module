@@ -1,5 +1,4 @@
 services:
-  swapi.data_retrieval:
-    class: Drupal\swapi\DataRetrieval
+  #Класс People в котором происходит получение данных
   swapi.people_retrieval:
     class: Drupal\swapi\People

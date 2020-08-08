@@ -25,7 +25,7 @@
       ]);
 
       foreach ($Character as $field => $fieldValue) {
-        $node->set(('field_' . $field), $fieldValue);
+        $node->set(('field_people_' . $field), $fieldValue);
       }
 
       $this->saveNode($node);
