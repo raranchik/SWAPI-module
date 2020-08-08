@@ -21,20 +21,3 @@
     }
   }
 
-/*  function swapi_people_cronjob() {
-     $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
-
-          $entity = $storage_handler->loadByProperties(['type' => 'people']);
-
-          $storage_handler->delete($entity);
-
-    $queue_factory = \Drupal::service('queue');
-
-    $queue = $queue_factory->get('people_queue_worker');
-
-    $People = \Drupal::service('swapi.people_retrieval')->getPeople();
-
-    foreach ($People as $Character) {
-      $queue->createItem($Character);
-    }
-  }*/
