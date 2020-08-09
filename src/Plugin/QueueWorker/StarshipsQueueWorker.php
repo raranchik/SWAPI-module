@@ -9,21 +9,21 @@
    * Processes Node Tasks.
    *
    * @QueueWorker(
-   *   id = "people_queue_worker",
-   *   title = @Translation("People node"),
+   *   id = "starships_queue_worker",
+   *   title = @Translation("Starships node"),
    *   cron = {"time" = 60}
    * )
    */
 
-  class PeopleQueueWorker extends QueueWorkerBase {
-    public function processItem($character) {
+  class StarshipsQueueWorker extends QueueWorkerBase {
+    public function processItem($starship) {
       $node = Node::create([
-        'type' => 'people',
-        'title' => 'People',
+        'type' => 'starships',
+        'title' => 'Starship',
       ]);
 
-      foreach ($character as $field => $fieldValue) {
-        $node->set(('field_' . $field), $fieldValue);
+      foreach ($starship as $field => $fieldValue) {
+        $node->set(('field_' . strtolower($field)), $fieldValue);
       }
 
       $this->saveNode($node);

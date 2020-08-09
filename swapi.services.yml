@@ -1,4 +1,14 @@
 services:
-  #Класс People в котором происходит получение данных
+  #Классы в которых происходит получение данных
   swapi.people_retrieval:
     class: Drupal\swapi\People
+  swapi.films_retrieval:
+    class: Drupal\swapi\Films
+  swapi.planets_retrieval:
+    class: Drupal\swapi\Planets
+  swapi.starships_retrieval:
+    class: Drupal\swapi\Starships
+  swapi.vehicles_retrieval:
+    class: Drupal\swapi\Vehicles
+  swapi.species_retrieval:
+    class: Drupal\swapi\Species

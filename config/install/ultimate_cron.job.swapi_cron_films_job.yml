@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - swapi
+title: 'Adding films nodes'
+id: swapi_cron_films_job
+weight: 0
+module: swapi
+callback: swapi_cron_films_job
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '*/1+@ * * * *'

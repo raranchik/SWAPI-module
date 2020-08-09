@@ -2,6 +2,22 @@
 
   use Drupal\Core\Queue\QueueFactory;
   use Drupal\Core\Queue\QueueInterface;
+  use Drupal\user\Entity\User;
+
+  /**
+   * Implements hook_form_contact_message_swapi_contact_form_form_alter().
+   */
+  function swapi_form_contact_message_swapi_contact_form_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+  {
+    if (\Drupal::currentUser()->isAuthenticated()) {
+      $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+      $name = $user->field_name->value;
+      $surname = $user->field_surname->value;
+
+      $form['field_name']['widget'][0]['value']['#default_value'] = $name;
+      $form['field_surname']['widget'][0]['value']['#default_value'] = $surname;
+    }
+  }
 
   function swapi_cron_people_job() {
     $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
@@ -16,8 +32,97 @@
 
     $People = \Drupal::service('swapi.people_retrieval')->getPeople();
 
-    foreach ($People as $Character) {
-      $queue->createItem($Character);
+    foreach ($People as $character) {
+      $queue->createItem($character);
     }
   }
 
+  function swapi_cron_planets_job() {
+    $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+
+    $entity = $storage_handler->loadByProperties(['type' => 'planets']);
+
+    $storage_handler->delete($entity);
+
+    $queue_factory = \Drupal::service('queue');
+
+    $queue = $queue_factory->get('planets_queue_worker');
+
+    $Planets = \Drupal::service('swapi.planets_retrieval')->getPlanets();
+
+    foreach ($Planets as $planet) {
+      $queue->createItem($planet);
+    }
+  }
+
+  function swapi_cron_films_job() {
+    $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+
+    $entity = $storage_handler->loadByProperties(['type' => 'films']);
+
+    $storage_handler->delete($entity);
+
+    $queue_factory = \Drupal::service('queue');
+
+    $queue = $queue_factory->get('films_queue_worker');
+
+    $Films = \Drupal::service('swapi.films_retrieval')->getFilms();
+
+    foreach ($Films as $film) {
+      $queue->createItem($film);
+    }
+  }
+
+  function swapi_cron_vehicles_job() {
+    $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+
+    $entity = $storage_handler->loadByProperties(['type' => 'vehicles']);
+
+    $storage_handler->delete($entity);
+
+    $queue_factory = \Drupal::service('queue');
+
+    $queue = $queue_factory->get('vehicles_queue_worker');
+
+    $Vehicles = \Drupal::service('swapi.vehicles_retrieval')->getVehicles();
+
+    foreach ($Vehicles as $vehicle) {
+      $queue->createItem($vehicle);
+    }
+  }
+
+  function swapi_cron_starships_job() {
+    $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+
+    $entity = $storage_handler->loadByProperties(['type' => 'starships']);
+
+    $storage_handler->delete($entity);
+
+    $queue_factory = \Drupal::service('queue');
+
+    $queue = $queue_factory->get('starships_queue_worker');
+
+    $Starships = \Drupal::service('swapi.starships_retrieval')->getStarships();
+
+    foreach ($Starships as $starship) {
+      $queue->createItem($starship);
+    }
+  }
+
+  function swapi_cron_species_job() {
+    $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+
+    $entity = $storage_handler->loadByProperties(['type' => 'species']);
+
+    $storage_handler->delete($entity);
+
+    $queue_factory = \Drupal::service('queue');
+
+    $queue = $queue_factory->get('species_queue_worker');
+
+    $Species = \Drupal::service('swapi.species_retrieval')->getSpecies();
+
+    foreach ($Species as $specie) {
+      $queue->createItem($specie);
+    }
+  }

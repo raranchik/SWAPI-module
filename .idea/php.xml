@@ -5,6 +5,10 @@
       <path value="$PROJECT_DIR$/../../../core" />
       <path value="$PROJECT_DIR$/../../ultimate_cron" />
       <path value="$PROJECT_DIR$/../../../vendor" />
+      <path value="$PROJECT_DIR$/../../core" />
+      <path value="$PROJECT_DIR$/../custom" />
+      <path value="$PROJECT_DIR$/../ultimate_cron" />
+      <path value="$PROJECT_DIR$/../../vendor" />
     </include_path>
   </component>
 </project>

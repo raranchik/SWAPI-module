@@ -2,11 +2,11 @@
 
   namespace Drupal\swapi;
 
-  class People {
-    private $queuePeople;
+  class Films {
+    private $queueFilms;
 
-    public function getPeople() {
-      $url = 'https://swapi.dev/api/people/';
+    public function getFilms() {
+      $url = 'https://swapi.dev/api/films/';
 
       $data = $this->getData($url);
 
@@ -14,13 +14,13 @@
       unset($data['next']);
       unset($data['previous']);
 
-      $this->queuePeople = array_shift($data);
+      $this->queueFilms = array_shift($data);
 
-      return $this->queuePeople;
+      return $this->queueFilms;
     }
 
 
-    // Устанавливаем соединение с swapi.dev и получаем данные People
+    // Устанавливаем соединение с swapi.dev и получаем данные Films
     private function getData($url) {
 
       $ch = curl_init();

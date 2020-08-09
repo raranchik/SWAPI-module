@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - swapi
+title: 'Adding vehicles nodes'
+id: swapi_cron_vehicles_job
+weight: 0
+module: swapi
+callback: swapi_cron_vehicles_job
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '*/1+@ * * * *'

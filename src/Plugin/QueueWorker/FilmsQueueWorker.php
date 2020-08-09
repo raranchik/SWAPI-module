@@ -9,20 +9,20 @@
    * Processes Node Tasks.
    *
    * @QueueWorker(
-   *   id = "people_queue_worker",
-   *   title = @Translation("People node"),
+   *   id = "films_queue_worker",
+   *   title = @Translation("Films node"),
    *   cron = {"time" = 60}
    * )
    */
 
-  class PeopleQueueWorker extends QueueWorkerBase {
-    public function processItem($character) {
+  class FilmsQueueWorker extends QueueWorkerBase {
+    public function processItem($films) {
       $node = Node::create([
-        'type' => 'people',
-        'title' => 'People',
+        'type' => 'films',
+        'title' => 'Film',
       ]);
 
-      foreach ($character as $field => $fieldValue) {
+      foreach ($films as $field => $fieldValue) {
         $node->set(('field_' . $field), $fieldValue);
       }
 
