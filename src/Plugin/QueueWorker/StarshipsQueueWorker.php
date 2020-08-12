@@ -19,7 +19,7 @@
     public function processItem($starship) {
       $node = Node::create([
         'type' => 'starships',
-        'title' => 'Starship',
+        'title' => $starship['name'],
       ]);
 
       foreach ($starship as $field => $fieldValue) {

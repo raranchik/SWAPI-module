@@ -6,15 +6,17 @@
     private $queueStarships;
 
     public function getStarships() {
-      $url = 'https://swapi.dev/api/starships/';
+      $data = [];
+      $baseUrl = 'https://swapi.dev/api/starships/';
 
-      $data = $this->getData($url);
+      $examlpeRequest = $this->getData($baseUrl);
+      $countStarships = $examlpeRequest['count'];
 
-      unset($data['count']);
-      unset($data['next']);
-      unset($data['previous']);
+      for ($i = 1; $i <= $countStarships; $i++) {
+        $data[] = $this->getData($baseUrl . $i . '/');
+      }
 
-      $this->queueStarships = array_shift($data);
+      $this->queueStarships = $data;
 
       return $this->queueStarships;
     }

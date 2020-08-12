@@ -6,15 +6,17 @@
     private $queuePeople;
 
     public function getPeople() {
-      $url = 'https://swapi.dev/api/people/';
+      $data = [];
+      $baseUrl = 'https://swapi.dev/api/people/';
 
-      $data = $this->getData($url);
+      $examlpeRequest = $this->getData($baseUrl);
+      $countPeople = $examlpeRequest['count'];
 
-      unset($data['count']);
-      unset($data['next']);
-      unset($data['previous']);
+      for ($i = 1; $i <= $countPeople; $i++) {
+        $data[] = $this->getData($baseUrl . $i . '/');
+      }
 
-      $this->queuePeople = array_shift($data);
+      $this->queuePeople = $data;
 
       return $this->queuePeople;
     }

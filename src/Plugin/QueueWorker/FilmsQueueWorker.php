@@ -19,7 +19,7 @@
     public function processItem($films) {
       $node = Node::create([
         'type' => 'films',
-        'title' => 'Film',
+        'title' => $films['title'],
       ]);
 
       foreach ($films as $field => $fieldValue) {

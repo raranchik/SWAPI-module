@@ -6,15 +6,17 @@
     private $queuePlanets;
 
     public function getPlanets() {
-      $url = 'https://swapi.dev/api/planets/';
+      $data = [];
+      $baseUrl = 'https://swapi.dev/api/planets/';
 
-      $data = $this->getData($url);
+      $examlpeRequest = $this->getData($baseUrl);
+      $countPlanets = $examlpeRequest['count'];
 
-      unset($data['count']);
-      unset($data['next']);
-      unset($data['previous']);
+      for ($i = 1; $i <= $countPlanets; $i++) {
+        $data[] = $this->getData($baseUrl . $i . '/');
+      }
 
-      $this->queuePlanets = array_shift($data);
+      $this->queuePlanets = $data;
 
       return $this->queuePlanets;
     }

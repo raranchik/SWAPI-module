@@ -19,6 +19,8 @@
     }
   }
 
+
+
   function swapi_cron_people_job() {
     $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
 
@@ -29,11 +31,14 @@
     $queue_factory = \Drupal::service('queue');
 
     $queue = $queue_factory->get('people_queue_worker');
+    $queue->deleteQueue();
 
     $People = \Drupal::service('swapi.people_retrieval')->getPeople();
 
     foreach ($People as $character) {
-      $queue->createItem($character);
+      if (!array_key_exists('detail',$character)) {
+        $queue->createItem($character);
+      }
     }
   }
 
@@ -47,11 +52,14 @@
     $queue_factory = \Drupal::service('queue');
 
     $queue = $queue_factory->get('planets_queue_worker');
+    $queue->deleteQueue();
 
     $Planets = \Drupal::service('swapi.planets_retrieval')->getPlanets();
 
     foreach ($Planets as $planet) {
-      $queue->createItem($planet);
+      if (!array_key_exists('detail',$planet)) {
+        $queue->createItem($planet);
+      }
     }
   }
 
@@ -65,11 +73,14 @@
     $queue_factory = \Drupal::service('queue');
 
     $queue = $queue_factory->get('films_queue_worker');
+    $queue->deleteQueue();
 
     $Films = \Drupal::service('swapi.films_retrieval')->getFilms();
 
     foreach ($Films as $film) {
-      $queue->createItem($film);
+      if (!array_key_exists('detail',$film)) {
+        $queue->createItem($film);
+      }
     }
   }
 
@@ -83,11 +94,14 @@
     $queue_factory = \Drupal::service('queue');
 
     $queue = $queue_factory->get('vehicles_queue_worker');
+    $queue->deleteQueue();
 
     $Vehicles = \Drupal::service('swapi.vehicles_retrieval')->getVehicles();
 
     foreach ($Vehicles as $vehicle) {
-      $queue->createItem($vehicle);
+      if (!array_key_exists('detail',$vehicle)) {
+        $queue->createItem($vehicle);
+      }
     }
   }
 
@@ -101,11 +115,14 @@
     $queue_factory = \Drupal::service('queue');
 
     $queue = $queue_factory->get('starships_queue_worker');
+    $queue->deleteQueue();
 
     $Starships = \Drupal::service('swapi.starships_retrieval')->getStarships();
 
     foreach ($Starships as $starship) {
-      $queue->createItem($starship);
+      if (!array_key_exists('detail',$starship)) {
+        $queue->createItem($starship);
+      }
     }
   }
 
@@ -119,10 +136,13 @@
     $queue_factory = \Drupal::service('queue');
 
     $queue = $queue_factory->get('species_queue_worker');
+    $queue->deleteQueue();
 
     $Species = \Drupal::service('swapi.species_retrieval')->getSpecies();
 
     foreach ($Species as $specie) {
-      $queue->createItem($specie);
+      if (!array_key_exists('detail',$specie)) {
+        $queue->createItem($specie);
+      }
     }
   }

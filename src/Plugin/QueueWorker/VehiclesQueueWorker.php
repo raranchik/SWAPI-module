@@ -19,7 +19,7 @@
     public function processItem($vehicle) {
       $node = Node::create([
         'type' => 'vehicles',
-        'title' => 'Vehicle',
+        'title' => $vehicle['name'],
       ]);
 
       foreach ($vehicle as $field => $fieldValue) {

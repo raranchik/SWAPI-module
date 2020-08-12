@@ -6,15 +6,17 @@
     private $queueFilms;
 
     public function getFilms() {
-      $url = 'https://swapi.dev/api/films/';
+      $data = [];
+      $baseUrl = 'https://swapi.dev/api/films/';
 
-      $data = $this->getData($url);
+      $examlpeRequest = $this->getData($baseUrl);
+      $countFilms = $examlpeRequest['count'];
 
-      unset($data['count']);
-      unset($data['next']);
-      unset($data['previous']);
+      for ($i = 1; $i <= $countFilms; $i++) {
+        $data[] = $this->getData($baseUrl . $i . '/');
+      }
 
-      $this->queueFilms = array_shift($data);
+      $this->queueFilms = $data;
 
       return $this->queueFilms;
     }

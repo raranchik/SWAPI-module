@@ -6,15 +6,17 @@
     private $queueVehicles;
 
     public function getVehicles() {
-      $url = 'https://swapi.dev/api/vehicles/';
+      $data = [];
+      $baseUrl = 'https://swapi.dev/api/vehicles/';
 
-      $data = $this->getData($url);
+      $examlpeRequest = $this->getData($baseUrl);
+      $countVehicles = $examlpeRequest['count'];
 
-      unset($data['count']);
-      unset($data['next']);
-      unset($data['previous']);
+      for ($i = 1; $i <= $countVehicles; $i++) {
+        $data[] = $this->getData($baseUrl . $i . '/');
+      }
 
-      $this->queueVehicles = array_shift($data);
+      $this->queueVehicles = $data;
 
       return $this->queueVehicles;
     }

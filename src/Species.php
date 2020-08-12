@@ -6,15 +6,17 @@
     private $queueSpecies;
 
     public function getSpecies() {
-      $url = 'https://swapi.dev/api/species/';
+      $data = [];
+      $baseUrl = 'https://swapi.dev/api/species/';
 
-      $data = $this->getData($url);
+      $examlpeRequest = $this->getData($baseUrl);
+      $countSpecies = $examlpeRequest['count'];
 
-      unset($data['count']);
-      unset($data['next']);
-      unset($data['previous']);
+      for ($i = 1; $i <= $countSpecies; $i++) {
+        $data[] = $this->getData($baseUrl . $i . '/');
+      }
 
-      $this->queueSpecies = array_shift($data);
+      $this->queueSpecies = $data;
 
       return $this->queueSpecies;
     }
