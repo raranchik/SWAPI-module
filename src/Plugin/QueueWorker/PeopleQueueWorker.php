@@ -35,16 +35,10 @@
       // Иначе выполни cron job создания нод Planets
       // Загрузи id нужной ноды Planet и присвой его референс полю
       if (!is_null($idNodePlanet)) {
-        /*$node->field_reference_planet[] = [
-          'target_id' => $idNodePlanet
-        ];*/
           $node->set('field_reference_planet', $idNodePlanet);
       } else {
         $this->loadCallbackPlanet();
         $idNodePlanet = $this->loadNidPlanets($character['homeworld']);
-        /*$node->field_reference_planet[] = [
-          'target_id' => $idNodePlanet
-        ];*/
         $node->set('field_reference_planet', $idNodePlanet);
       }
 

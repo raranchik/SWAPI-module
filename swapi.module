@@ -19,7 +19,29 @@
     }
   }
 
+  /**
+   * Implements swapi_form_alter().
+   */
+  function swapi_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    $view_names = array('people_table');
+    $view = $form_state->getStorage('view');
 
+    if ($form_id == 'views_exposed_form' && in_array($view['view']->id(), $view_names)) {
+      $form['field_reference_planet_target_id'] = [
+        '#type' => 'entity_autocomplete',
+        '#target_type' => 'node',
+        '#selection_settings' => [
+          'target_bundles' => ['planets', 'field_reference_planet'],
+        ],
+        '#operator' => 'contains',
+      ];
+    }
+
+/*    $form['field_reference_planet_target_id']['widget'][0]['uri']['#selection_handler']="default:node";
+    $form['field_reference_planet_target_id']['widget'][0]['uri']['#selection_settings']=[
+      'target_bundles'=>['planets'=>'planets'],
+    ];*/
+  }
 
   function swapi_cron_people_job() {
     $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
