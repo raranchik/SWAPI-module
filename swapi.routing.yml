@@ -1,0 +1,7 @@
+swapi.form_people:
+  path: '/people-form'
+  defaults:
+    _title: 'People form'
+    _form: '\Drupal\swapi\Form\PeopleForm'
+  requirements:
+    _permission: 'access content'

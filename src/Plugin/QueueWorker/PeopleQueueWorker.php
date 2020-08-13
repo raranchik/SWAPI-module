@@ -4,7 +4,9 @@
 
   use Drupal\Core\Queue\QueueWorkerBase;
   use Drupal\node\Entity\Node;
-
+  use Drupal\ultimate_cron\Signal;
+  use Drupal\ultimate_cron;
+  use Drupal\ultimate_cron\Entity\CronJob;
   /**
    * Processes Node Tasks.
    *
@@ -17,53 +19,83 @@
 
   class PeopleQueueWorker extends QueueWorkerBase {
     public function processItem($character) {
+      // Создание ноды People
       $node = Node::create([
         'type' => 'people',
         'title' => $character['name'],
       ]);
-
       foreach ($character as $field => $fieldValue) {
         $node->set(('field_' . $field), $fieldValue);
       }
 
-/*      $nid = $this->loadNidPlanets($character['homeworld']);
+      // Получение id ноды Planets на которую ссылается нода People
+      $idNodePlanet = $this->loadNidPlanets($character['homeworld']);
 
-      $node->set('field_test', $nid);*/
-/*      $node->field_reference[] = [
-        'target_id' => $nid,
-      ];*/
+      // Если id существует, то в референс поле укажи на какую ноду Planets ссылаться
+      // Иначе выполни cron job создания нод Planets
+      // Загрузи id нужной ноды Planet и присвой его референс полю
+      if (!is_null($idNodePlanet)) {
+        /*$node->field_reference_planet[] = [
+          'target_id' => $idNodePlanet
+        ];*/
+          $node->set('field_reference_planet', $idNodePlanet);
+      } else {
+        $this->loadCallbackPlanet();
+        $idNodePlanet = $this->loadNidPlanets($character['homeworld']);
+        /*$node->field_reference_planet[] = [
+          'target_id' => $idNodePlanet
+        ];*/
+        $node->set('field_reference_planet', $idNodePlanet);
+      }
 
+      // Костыльный автокоплит
       $dataPlanet = $this->getDataPlanet($character['homeworld']);
-
       $node->set('field_test', $dataPlanet['name']);
-/*      $node->field_reference[] = [
-        'target_id' => $dataPlanet['name'],
-      ];*/
 
+      // Сохраненение ноды
       $this->saveNode($node);
     }
 
+    // Проверка существования ноды Planets
+    private function existsNodePlanet($field_url) {
+      $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
+      $node = $storage_handler->loadByProperties([
+        'type' => 'planets',
+        'field_url' => $field_url,
+        ]);
+
+      return empty($node);
+    }
+
+    // Публикация ноды
     private function saveNode($node){
       $node->setPublished(true);
       $node->save();
     }
 
-    private function loadNidPlanets($homeworld) {
-      $storage_handler = \Drupal::entityTypeManager()->getStorage('node');
-      $nodes = $storage_handler->loadByProperties(['type' => 'planets']);
-
-/*      $nids = \Drupal::entityQuery('node')->condition('type', 'planets')->execute();
-      $nodes = Node::loadMultiple($nids);*/
-
-      foreach ($nodes as $node) {
-        $urlPlanet = $node->get('field_url');
-
-        if ($homeworld == $urlPlanet) {
-          return $node->id();
-        }
-      }
+    // Выполнение cron job Planets
+    private function loadCallbackPlanet() {
+      /** @var \Drupal\ultimate_cron\Entity\CronJob $job */
+      $job = CronJob::loadMultiple([
+        'swapi_cron_planets_job',
+        'ultimate_cron_queue_planets_queue_worker',
+      ]);
+      $job->get('swapi_cron_planets_job');
+      $job->get('ultimate_cron_queue_planets_queue_worker');
     }
 
+    // Получение нужного id ноды Planets
+    private function loadNidPlanets($homeworld) {
+     $nid = \Drupal::entityQuery('node')
+       ->condition('type', 'planets')
+       ->condition('status', 1)
+       ->condition('field_url', $homeworld)
+       ->execute();
+
+     return $nid;
+    }
+
+    // Костыльный автомокоплит
     private function getDataPlanet($baseUrl) {
       $url = str_replace('http', 'https', $baseUrl);
 
